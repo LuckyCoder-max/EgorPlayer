@@ -1,0 +1,104 @@
+﻿<Window x:Class="EgorPlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EgorPlayer"
+        mc:Ignorable="d"
+        Title="Player" 
+        Height="620" 
+        Width="480" 
+        Background="Black" 
+        WindowStyle="None" 
+        ResizeMode="NoResize"
+        MouseDown="Window_MouseDown"
+        Icon ="/multimedia.ico"
+        >
+        
+    <Grid MouseWheel="Grid_MouseWheel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="4.2*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Lime" BorderThickness="0,0,0,3">
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="/multimedia.ico" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="Hide" Click="Hide_Click" Style="{StaticResource Window.Button.Style}">
+                        <Image Source="/13.png" />
+                    </Button>
+                    <Button x:Name="Close" Click="Close_Click" Style="{StaticResource Window.Button.Style}">
+                        <Image Source="/12.png" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left">
+            <Image Source="/Матрица.png" Stretch="Fill"/>
+            <TextBlock Text="Текст:" Padding="15,10,0,0" Foreground="Lime"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+            <TextBlock x:Name="currentTime" Text="00:00:00" Style="{StaticResource Track.Time.Style}"/>
+            <ProgressBar x:Name="trackProgress" MouseDown="trackProgress_MouseDown" Style="{StaticResource Track.ProgressBar.Style}"/>
+            <TextBlock x:Name="trackDuration" Text="00:00:00" Style="{StaticResource Track.Time.Style}"/>
+        </StackPanel>
+
+        <UniformGrid Grid.Row="3" Rows="1" Margin="10,0,10,0">
+            <Button x:Name="Previous" Style="{StaticResource Color.Button.Style}" Click="Previous_Click">
+                <Image Source="/08.png"/>
+            </Button>
+            <Button x:Name="PauseBtn" Click="PauseBtn_OnClick" Style="{StaticResource Color.Button.Style}">
+                <Image Source="/09.png"/>
+            </Button>
+            <Button x:Name="PlayBtn" Click="PlayBtn_OnClick" Style="{StaticResource Color.Button.Style}">
+                <Image Source="/10.png"/>
+            </Button>
+            <Button x:Name="StopBtn" Click="StopBtn_OnClick" Style="{StaticResource Color.Button.Style}">
+                <Image Source="/11.png" />
+            </Button>
+            <Button x:Name="Next" Click="Next_Click" Style="{StaticResource Color.Button.Style}">
+                <Image Source="/07.png" />
+            </Button>
+        </UniformGrid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Center">
+            <Slider x:Name="SoundPower" ValueChanged="SoundPower_ValueChanged" Style="{StaticResource Sound.Slider.Style}"/>
+            <TextBlock x:Name="VolumeTB" Text="0%" Style="{StaticResource Track.Time.Style}"/>
+        </StackPanel>
+
+        <ListBox x:Name="Playlist" Grid.Row="5"  SelectionChanged="Playlist_SelectionChanged"
+                 Style="{StaticResource Play.ListBox.Style}" MouseDoubleClick="Playlist_OnMouseDoubleClick"/>
+
+        <UniformGrid Grid.Row="6" Rows="1" Margin="25,5,25,0">
+            <Button x:Name="SaveBtn" Style="{StaticResource Color.Button.Style}" Click="SaveBtn_Click">
+                <Image Source="/04.png"/>
+            </Button>
+            <Button x:Name="LoadBtn" Style="{StaticResource Color.Button.Style}" Click="LoadBtn_Click">
+                <Image Source="/03.png" />
+            </Button>
+            <Button x:Name="ClearBtn" Style="{StaticResource Color.Button.Style}" Click="ClearBtn_Click">
+                <Image Source="/02.png" />
+            </Button>
+            <Button x:Name="AddBtn" Click="AddBtn_OnClick" Style="{StaticResource Color.Button.Style}">
+                <Image Source="/05.png" />
+            </Button>
+            <Button x:Name="DeleteBtn" Style="{StaticResource Color.Button.Style}" Click="DeleteBtn_Click">
+                <Image Source="/06.png" />
+            </Button>
+            <Button x:Name="RandomBtn" Style="{StaticResource Color.Button.Style}" Click="RandomBtn_Click">
+                <Image Source="/01.png" />
+            </Button>
+        </UniformGrid>
+    </Grid>
+</Window>
